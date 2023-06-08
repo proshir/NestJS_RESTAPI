@@ -24,12 +24,17 @@ export class UserService {
   async create(userData: CreateUserDto) {
     const err = await validate(userData);
     if (err.length > 0) throw new BadRequestException(err);
-    const userExists = await this.prisma.user.findUnique({
-      where: { email: userData.email },
-    });
-    if (userExists) {
-      throw new ConflictException('User already exists');
+    try {
+      const userExists = await this.prisma.user.findUnique({
+        where: { email: userData.email },
+      });
+      if (userExists) {
+        throw new ConflictException('User already exists');
+      }
+    } catch (error) {
+      throw new BadRequestException(error.message);
     }
+
     const createdUser = await this.prisma.user.create({
       data: { ...userData },
     });
