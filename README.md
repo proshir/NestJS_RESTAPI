@@ -1,7 +1,7 @@
 # Description
 This project was a test for entry into the payever company, and I was accepted.
 
-The goal was to build a rest api system with nodejs to manage the user database with rabbit mq to send events.
+Aim to create a REST application using the NestJS framework, MongoDB and RabbitMQ. Implement endpoints for user creation, retrieval, and avatar management. Ensure slant compliance, successful builds, and unit/functional test coverage. 
 
 ## Installation
 
